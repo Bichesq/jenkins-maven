@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Push to repository') { 
             steps {
-                sh "docker push bichesq/dockerapp:${BUILD_NUMBER"
+                sh "docker push bichesq/dockerapp:${BUILD_NUMBER}"
             }
         }
         
