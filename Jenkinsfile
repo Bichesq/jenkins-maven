@@ -24,35 +24,24 @@ pipeline {
                 sh "mvn package"
             }
         }
-
-
-        stage('Build Docker image'){
+        stage('build a docker image') { 
             steps {
-                sh 'docker build -t anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER} .'
-            }
-        }
-
-        stage('Docker Login'){
-            
-            steps {
-                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-                    sh "docker login -u anvbhaskar -p ${Dockerpwd}"
-                }
-            }                
-        }
-
-        stage('Docker Push'){
-            steps {
-                sh 'docker push anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER}'
+                sh "docker build -t bichesq/dockerapp:${BUILD_NUMBER}"
             }
         }
         
-        stage('Docker deploy'){
+        stage('Docker login') { 
             steps {
-                sh 'docker run -itd -p 8081:8080 anvbhaskar/springboot:0.0.3'
+                withCredentials([string(credentialsId: 'DockerID', variable: 'Dockerpwd')]) {
+                    sh "docker login -u bichesq -p $Dockerpwd"
+                }    
             }
         }
-
+        stage('Push to repository') { 
+            steps {
+                sh "docker push bichesq/dockerapp:${BUILD_NUMBER"
+            }
+        }
         
         stage('Archving') { 
             steps {
