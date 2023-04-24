@@ -25,8 +25,8 @@ pipeline {
             }
         }
         stage('build a docker image') { 
-            steps {
-                sh "docker build -t bichesq/dockerapp ."
+            steps {AdminPass333
+                sh "docker build -t bichesq/dockerapp:${BUILD_NUMBER} ."
             }
         }
         
@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Push to repository') { 
             steps {
-                sh "docker push bichesq/dockerapp"
+                sh "docker push bichesq/dockerapp:${BUILD_NUMBER}"
             }
         }
         
