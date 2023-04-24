@@ -26,7 +26,7 @@ pipeline {
         }
         stage('build a docker image') { 
             steps {
-                sh "docker build -t bichesq/dockerapp:v6"
+                sh "docker build -t bichesq/dockerapp"
             }
         }
         
@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Push to repository') { 
             steps {
-                sh "docker push bichesq/dockerapp:v6"
+                sh "docker push bichesq/dockerapp"
             }
         }
         
