@@ -33,7 +33,7 @@ pipeline {
         stage('Docker login') { 
             steps {
                 withCredentials([string(credentialsId: 'DockerID', variable: 'Dockerpwd')]) {
-                    sh "docker login -u bichesq -p $Dockerpwd"
+                    sh "docker login -u bichesq -p ${Dockerpwd}"
                 }    
             }
         }
