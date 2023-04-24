@@ -26,7 +26,7 @@ pipeline {
         }
         stage('build a docker image') { 
             steps {
-                sh "docker build -t bichesq/dockerapp"
+                sh "docker build -t bichesq/dockerapp ."
             }
         }
         
