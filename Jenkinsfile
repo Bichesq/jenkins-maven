@@ -25,7 +25,7 @@ pipeline {
             }
         }
         stage('build a docker image') { 
-            steps {AdminPass333
+            steps {
                 sh "docker build -t bichesq/dockerapp:${BUILD_NUMBER} ."
             }
         }
